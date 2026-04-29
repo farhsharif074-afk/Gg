@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>الربح والخسارة</title>
+  <style>
+    body {font-family: 'Segoe UI', sans-serif; background:#f4f6f9; text-align:center;}
+    .container {margin:100px auto; width:400px; background:#fff; padding:20px; border-radius:8px; box-shadow:0 0 10px rgba(0,0,0,0.1);}
+    button {width:90%; padding:10px; margin:10px 0; background:#4a90e2; color:#fff; border:none; border-radius:5px;}
+    button:hover {background:#357ab8;}
+    nav a {margin:0 10px; color:#4a90e2; text-decoration:none;}
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="login.html">تسجيل الدخول</a>
+    <a href="sales.html">المبيعات</a>
+    <a href="purchases.html">المشتريات</a>
+  </nav>
+  <div class="container">
+    <h2>الربح والخسارة</h2>
+    <button onclick="calculateProfit()">احسب الربح/الخسارة</button>
+    <p id="profitResult"></p>
+  </div>
+  <script>
+    function calculateProfit(){
+      const sales=parseFloat(localStorage.getItem("sales"))||0;
+      const purchases=parseFloat(localStorage.getItem("purchases"))||0;
+      const profit=sales-purchases;
+      document.getElementById("profitResult").innerText=
+        profit>=0 ? "الربح: "+profit+" جنيه" : "الخسارة: "+profit+" جنيه";
+    }
+  </script>
+</body>
+</html>
