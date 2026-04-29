@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>المبيعات</title>
+  <style>
+    body {font-family: 'Segoe UI', sans-serif; background:#f4f6f9; text-align:center;}
+    .container {margin:100px auto; width:400px; background:#fff; padding:20px; border-radius:8px; box-shadow:0 0 10px rgba(0,0,0,0.1);}
+    input, button {width:90%; padding:10px; margin:10px 0;}
+    button {background:#4a90e2; color:#fff; border:none; border-radius:5px;}
+    button:hover {background:#357ab8;}
+    nav a {margin:0 10px; color:#4a90e2; text-decoration:none;}
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="login.html">تسجيل الدخول</a>
+    <a href="purchases.html">المشتريات</a>
+    <a href="profit.html">الربح والخسارة</a>
+  </nav>
+  <div class="container">
+    <h2>المبيعات</h2>
+    <input type="number" id="price" placeholder="سعر المنتج">
+    <input type="number" id="quantity" placeholder="الكمية">
+    <button onclick="calculateSales()">احسب</button>
+    <p id="salesResult"></p>
+  </div>
+  <script>
+    let totalSales=0;
+    function calculateSales(){
+      const price=parseFloat(document.getElementById("price").value);
+      const quantity=parseInt(document.getElementById("quantity").value);
+      const result=price*quantity;
+      totalSales+=result;
+      document.getElementById("salesResult").innerText="إجمالي المبيعات: "+result+" جنيه";
+      localStorage.setItem("sales", totalSales);
+    }
+  </script>
+</body>
+</html>

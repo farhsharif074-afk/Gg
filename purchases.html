@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>المشتريات</title>
+  <style>
+    body {font-family: 'Segoe UI', sans-serif; background:#f4f6f9; text-align:center;}
+    .container {margin:100px auto; width:400px; background:#fff; padding:20px; border-radius:8px; box-shadow:0 0 10px rgba(0,0,0,0.1);}
+    input, button {width:90%; padding:10px; margin:10px 0;}
+    button {background:#4a90e2; color:#fff; border:none; border-radius:5px;}
+    button:hover {background:#357ab8;}
+    nav a {margin:0 10px; color:#4a90e2; text-decoration:none;}
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="login.html">تسجيل الدخول</a>
+    <a href="sales.html">المبيعات</a>
+    <a href="profit.html">الربح والخسارة</a>
+  </nav>
+  <div class="container">
+    <h2>المشتريات</h2>
+    <input type="number" id="purchasePrice" placeholder="سعر الشراء">
+    <input type="number" id="purchaseQuantity" placeholder="الكمية">
+    <button onclick="calculatePurchases()">احسب</button>
+    <p id="purchaseResult"></p>
+  </div>
+  <script>
+    let totalPurchases=0;
+    function calculatePurchases(){
+      const price=parseFloat(document.getElementById("purchasePrice").value);
+      const quantity=parseInt(document.getElementById("purchaseQuantity").value);
+      const result=price*quantity;
+      totalPurchases+=result;
+      document.getElementById("purchaseResult").innerText="إجمالي المشتريات: "+result+" جنيه";
+      localStorage.setItem("purchases", totalPurchases);
+    }
+  </script>
+</body>
+</html>
